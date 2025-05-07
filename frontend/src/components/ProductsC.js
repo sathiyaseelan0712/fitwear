@@ -98,9 +98,9 @@ const ProductsC = ({match,history}) => {
             <ul>
                 <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter'>Default</Link>
                 <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=Rating'>Rating</Link>
-                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=date'>Date</Link>
-                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=highprice'>Low to high price</Link>
-                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=lowprice'>high to low price</Link>
+                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=Date'>Date</Link>
+                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=Highprice'>High to Low price</Link>
+                <Link onClick = {()=>(setshowfilter(false))} className = 'lined' to = '?filter=Lowprice'>Low to High price</Link>
             </ul> 
         </div>  {/*sort by option in  filter } */}
         <div className = 'pricediv'>

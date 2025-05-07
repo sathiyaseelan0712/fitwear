@@ -31,16 +31,16 @@ const getProducts = asyncHandler(async (req, res) => {
                 res.json(productsbyrating)
 
                 break;
-            case 'date':
+            case 'Date':
                 const productsbydate =  await Product.find({}).sort('createdAt').exec();
                 res.json(productsbydate)
                     break;
-            case 'highprice':
+            case 'Highprice':
                 const productsbyhighprice =  await Product.find({}).sort('price');
                 res.json(productsbyhighprice)
 
                     break;
-            case 'lowprice':
+            case 'Lowprice':
                 const productsbylowprice =  await Product.find({}).sort('-price').exec();
                 res.json(productsbylowprice)
                     break;
