@@ -3,25 +3,45 @@ import { useParams } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import RelatedProducts from '../components/RelatedProducts';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency, addToCart } = useContext(ShopContext);
+  const {
+    products,
+    currency,
+    addToCart,
+    updateQuantity,
+    cartItems,
+  } = useContext(ShopContext);
+
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState('');
   const [size, setSize] = useState('');
 
-  const fetchProductData = () => {
+  useEffect(() => {
     const product = products.find((item) => item._id === productId);
     if (product) {
       setProductData(product);
-      setImage(product.images[0]); // Assuming `image` is an array of URLs
+      setImage(product.images[0]);
+    }
+  }, [productId, products]);
+
+  const handleAddToCart = () => {
+    if (!size) {
+      toast.error('Please select a size.');
+      return;
+    }
+
+    const itemId = productData._id;
+    const existingQty = cartItems[itemId]?.[size] || 0;
+
+    if (existingQty === 0) {
+      addToCart(itemId, size);
+    } else {
+      updateQuantity(itemId, size, existingQty + 1);
     }
   };
-
-  useEffect(() => {
-    fetchProductData();
-  }, [productId, products]);
 
   return productData ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
@@ -81,7 +101,10 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={()=> addToCart(productData._id, size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+          <button
+            onClick={handleAddToCart}
+            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+          >
             ADD TO CART
           </button>
           <hr className="mt-8 sm:w-4/5" />

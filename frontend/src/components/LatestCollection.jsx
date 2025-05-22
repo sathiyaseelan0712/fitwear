@@ -16,8 +16,7 @@ const LatestCollection = () => {
       <div className='text-center py-8 text-3xl'>
         <Title text1={'LATEST'} text2={'COLLECTIONS'} />
         <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad pariatur dolores ea voluptas placeat nulla eum repudiandae deserunt libero.
-        </p>
+          Explore the newest arrivals from FitWear’s latest collections—crafted for performance, built for style. From cutting-edge activewear to elevated everyday essentials, each piece blends premium materials with modern design to keep you moving in comfort and confidence. Discover what's trending and stay ahead with our freshest drops.   </p>
       </div>
       {/* Rendering products */}
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
